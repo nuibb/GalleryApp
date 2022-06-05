@@ -1,7 +1,7 @@
 import Foundation
 
 // MARK: - WelcomeElement
-struct Photo: Codable {
+struct Photo: Codable, Identifiable {
     let id: String
 //    let createdAt, updatedAt: Date
 //    let width, height: Int

@@ -9,10 +9,15 @@ import Foundation
 import SwiftUI
 
 class ApiManager {
-    @ObservedObject var handler = APIHandler<Photo>.shared;
-    
-    func getPhotos() -> [Photo] {
-        return handler.elements
+    func makeUnsplashAPIComponents(withPagination index: Int) -> URLComponents {
+        var components = URLComponents()
+        components.scheme = UnsplashAPI.scheme
+        components.host = UnsplashAPI.host
+        components.path = UnsplashAPI.path
+        components.queryItems = [
+            URLQueryItem(name: "page", value: String(index)),
+            URLQueryItem(name: "client_id", value: UnsplashAPI.key)
+        ]
+        return components
     }
-    
 }
