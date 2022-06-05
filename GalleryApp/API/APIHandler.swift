@@ -7,14 +7,23 @@
 
 import Foundation
 
-class APIHandler {
-    func fetchData<T: Codable>(_ url: String, completion: @escaping(T)->()) {
+class APIHandler<Element:Codable>: ObservableObject {
+    
+    //static let shared = APIHandler()
+    static var shared:APIHandler<Element>{
+        return APIHandler<Element>()
+    }
+    
+    typealias T = Element
+    @Published var elements = [T]()
+    
+    private func fetchData(_ url: String) {
         if let url = URL(string: url) {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { (data, response, error) in
                 if error == nil {
                     if let safeData = data {
-                        completion(self.decode(safeData) as T)
+                        self.elements  = self.decode(safeData)
                     }
                 }
             }
@@ -24,7 +33,7 @@ class APIHandler {
 }
 
 extension APIHandler {
-  func decode<T: Codable>(_ data: Data) -> T {
+  private func decode<T: Codable>(_ data: Data) -> T {
     // Create a decoder
     let decoder = JSONDecoder()
     // Create a property for the decoded data
