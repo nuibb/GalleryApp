@@ -34,6 +34,7 @@
 		8BDC891A2847E891001097A2 /* GalleryAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC89192847E891001097A2 /* GalleryAppTests.swift */; };
 		8BDC89242847E892001097A2 /* GalleryAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC89232847E892001097A2 /* GalleryAppUITests.swift */; };
 		8BDC89262847E892001097A2 /* GalleryAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC89252847E892001097A2 /* GalleryAppUITestsLaunchTests.swift */; };
+		8BF240DA284E02B600258D33 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF240D9284E02B600258D33 /* GridView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		8BDC891F2847E892001097A2 /* GalleryAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GalleryAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BDC89232847E892001097A2 /* GalleryAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryAppUITests.swift; sourceTree = "<group>"; };
 		8BDC89252847E892001097A2 /* GalleryAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8BF240D9284E02B600258D33 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 		8B983567284CA99C0029641F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8BF240D9284E02B600258D33 /* GridView.swift */,
 				8BDC89082847E88F001097A2 /* GalleryApp.swift */,
 				8BDC890A2847E88F001097A2 /* GalleryView.swift */,
 				8B983568284CAC6E0029641F /* PhotoDetailView.swift */,
@@ -396,6 +399,7 @@
 				8B983575284CF6990029641F /* EndPoints.swift in Sources */,
 				8B983566284CA6060029641F /* PhotoLinks.swift in Sources */,
 				8B983590284DB4950029641F /* UnsplashFetcher.swift in Sources */,
+				8BF240DA284E02B600258D33 /* GridView.swift in Sources */,
 				8B98358B284D7E940029641F /* Configuration.swift in Sources */,
 				8B98355F284CA6060029641F /* User.swift in Sources */,
 				8B983599284DD5910029641F /* PhotoViewModel.swift in Sources */,

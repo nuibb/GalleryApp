@@ -13,7 +13,6 @@ struct PhotoDetailView: View {
     let photoViewModel: PhotoViewModel
 
     // MARK: - BODY
-    // MARK: - BODY
     var body: some View {
         AsyncImage(url: URL(string: photoViewModel.thumbUrl), transaction: Transaction(animation: .spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0.25))) { phase in
           switch phase {
