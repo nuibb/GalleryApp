@@ -20,6 +20,8 @@ class ApiManager {
         components.path = UnsplashAPI.path
         components.queryItems = [
             URLQueryItem(name: "page", value: String(index)),
+            URLQueryItem(name: "per_page", value: String(UnsplashAPI.itemsPerPage)),
+            URLQueryItem(name: "order_by", value: String(UnsplashAPI.orderby)),
             URLQueryItem(name: "client_id", value: UnsplashAPI.key)
         ]
         return components

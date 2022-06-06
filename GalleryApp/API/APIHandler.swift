@@ -24,8 +24,7 @@ class APIHandler<Element:Codable>: ObservableObject {
             if error == nil {
                 if let safeData = data {
                     DispatchQueue.main.async {
-                        self.elements  = self.decode(safeData)
-                        print(self.elements.count)
+                        self.elements = self.decode(safeData)
                     }
                 }
             }
@@ -38,6 +37,8 @@ private extension APIHandler {
     func decode<T: Codable>(_ data: Data) -> T {
         // Create a decoder
         let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
         // Create a property for the decoded data
         guard let results = try? decoder.decode(T.self, from: data) else {
             fatalError("Failed to decode!")

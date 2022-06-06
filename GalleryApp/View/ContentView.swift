@@ -14,6 +14,7 @@ struct ContentView: View {
     @ObservedObject var handler = APIHandler<Photo>.shared;
     @State private var gridLayout: [GridItem] = [GridItem(.flexible())]
     @State private var gridColumn: Double = 3.0
+    @State private var itemIndex = 1
     
     func gridSwitch() {
         gridLayout = Array(repeating: .init(.flexible()), count: Int(gridColumn))
@@ -32,9 +33,17 @@ struct ContentView: View {
                         .edgesIgnoringSafeArea(.all)
                     ScrollView(.vertical, showsIndicators: false) {
                         LazyVGrid(columns: gridLayout, alignment: .center, spacing: 10) {
-                            ForEach(handler.elements) { photo in
-                                NavigationLink(destination: PhotoDetailView(photo: photo)) {
-                                    PhotoGridItemView(photo: photo)
+                            ForEach(handler.elements.indices, id:\.self) { index in
+                                NavigationLink(destination: PhotoDetailView(photo: handler.elements[index])) {
+                                    PhotoGridItemView(photo: handler.elements[index])
+                                        .onAppear(perform: {
+                                            if handler.elements[index] == handler.elements.last {
+                                               // getNextPageIfNecessary(encounteredIndex: index + 1)
+                                            }
+                                        })
+                                        .task {
+                                            
+                                        }
                                 } //: LINK
                             } //: LOOP
                         } //: GRID
@@ -47,11 +56,17 @@ struct ContentView: View {
         }//: NAVIGATION
         .navigationViewStyle(.stack)
         .onAppear(perform: {
-            let components = apiManager.makeUnsplashAPIComponents(withPagination: 1)
+            let components = apiManager.makeUnsplashAPIComponents(withPagination: self.itemIndex)
             handler.fetchData(with: components)
             gridSwitch()
         })
     }
+    
+//    private func getNextPageIfNecessary(encounteredIndex: Int) {
+//        guard encounteredIndex == handler.elements.count - 1 else { return }
+//        let components = apiManager.makeUnsplashAPIComponents(withPagination: self.itemIndex)
+//        handler.elements.append(contentsOf: )
+//    }
 }
 
 struct ContentView_Previews: PreviewProvider {

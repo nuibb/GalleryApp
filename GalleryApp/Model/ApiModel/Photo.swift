@@ -1,7 +1,7 @@
 import Foundation
 
 // MARK: - WelcomeElement
-struct Photo: Codable, Identifiable {
+struct Photo: Codable, Identifiable, Equatable {
     let id: String
 //    let createdAt, updatedAt: Date
 //    let width, height: Int
@@ -27,5 +27,9 @@ struct Photo: Codable, Identifiable {
 //        case currentUserCollections = "current_user_collections"
         case urls
 //        case links
+    }
+    
+    static func == (lhs: Photo, rhs: Photo) -> Bool {
+        return lhs.id == rhs.id
     }
 }
