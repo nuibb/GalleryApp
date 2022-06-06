@@ -6,22 +6,23 @@
 //
 
 import SwiftUI
+import Combine
 
-struct ContentView: View {
+struct GalleryView: View {
     
     // MARK: - PROPERTIES
-    let apiManager = ApiManager()
-    @ObservedObject var handler = APIHandler<Photo>.shared;
     @State private var gridLayout: [GridItem] = [GridItem(.flexible())]
     @State private var gridColumn: Double = 3.0
-    @State private var itemIndex = 1
+    @ObservedObject var viewModel: GalleryViewModel
     
+    // MARK: PROPERTIES
+    init() {
+        self.viewModel = GalleryViewModel(unsplashFetcher: UnsplashFetcher())
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]// for .inline, use titleTextAttributes
+    }
+
     func gridSwitch() {
         gridLayout = Array(repeating: .init(.flexible()), count: Int(gridColumn))
-    }
-    
-    init() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]// for .inline, use titleTextAttributes
     }
     
     // MARK: - BODY
@@ -33,12 +34,12 @@ struct ContentView: View {
                         .edgesIgnoringSafeArea(.all)
                     ScrollView(.vertical, showsIndicators: false) {
                         LazyVGrid(columns: gridLayout, alignment: .center, spacing: 10) {
-                            ForEach(handler.elements.indices, id:\.self) { index in
-                                NavigationLink(destination: PhotoDetailView(photo: handler.elements[index])) {
-                                    PhotoGridItemView(photo: handler.elements[index])
+                            ForEach(viewModel.dataSource.indices, id:\.self) { index in
+                                NavigationLink(destination: PhotoDetailView(photoViewModel: viewModel.dataSource[index])) {
+                                    PhotoGridItemView(photoViewModel: viewModel.dataSource[index])
                                         .onAppear(perform: {
-                                            if handler.elements[index] == handler.elements.last {
-                                               // getNextPageIfNecessary(encounteredIndex: index + 1)
+                                            if viewModel.dataSource[index] == viewModel.dataSource.last {
+                                                // getNextPageIfNecessary(encounteredIndex: index + 1)
                                             }
                                         })
                                         .task {
@@ -56,23 +57,20 @@ struct ContentView: View {
         }//: NAVIGATION
         .navigationViewStyle(.stack)
         .onAppear(perform: {
-            let components = apiManager.makeUnsplashAPIComponents(withPagination: self.itemIndex)
-            handler.fetchData(with: components)
             gridSwitch()
         })
     }
     
-//    private func getNextPageIfNecessary(encounteredIndex: Int) {
-//        guard encounteredIndex == handler.elements.count - 1 else { return }
-//        let components = apiManager.makeUnsplashAPIComponents(withPagination: self.itemIndex)
-//        handler.elements.append(contentsOf: )
-//    }
+    //    private func getNextPageIfNecessary(encounteredIndex: Int) {
+    //        guard encounteredIndex == handler.elements.count - 1 else { return }
+    //        let components = apiManager.makeUnsplashAPIComponents(withPagination: self.itemIndex)
+    //        handler.elements.append(contentsOf: )
+    //    }
 }
 
 struct ContentView_Previews: PreviewProvider {
-    let photos: [Photo] = Bundle.main.decode("photos.json")
     static var previews: some View {
-        ContentView()
+        GalleryView()
             .previewDevice("iPhone 12 Pro")
     }
 }

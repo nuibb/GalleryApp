@@ -9,11 +9,11 @@ import SwiftUI
 
 struct PhotoGridItemView: View {
     // MARK: - PROPERTIES
-    let photo: Photo
+    let photoViewModel: PhotoViewModel
     
     // MARK: - BODY
     var body: some View {
-        AsyncImage(url: URL(string: photo.urls.thumb), transaction: Transaction(animation: .spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0.25))) { phase in
+        AsyncImage(url: URL(string: photoViewModel.thumbUrl), transaction: Transaction(animation: .spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0.25))) { phase in
           switch phase {
           case .success(let image):
             image
@@ -35,7 +35,10 @@ struct PhotoGridItemView: View {
 
 struct PhotoGridItemView_Previews: PreviewProvider {
     static let photos: [Photo] = Bundle.main.decode("photos.json")
+    static let viewModels: [PhotoViewModel] = photos.map { photo in
+        PhotoViewModel(photo: photo)
+    }
     static var previews: some View {
-        PhotoGridItemView(photo: photos[0])
+        PhotoGridItemView(photoViewModel: viewModels[0])
     }
 }

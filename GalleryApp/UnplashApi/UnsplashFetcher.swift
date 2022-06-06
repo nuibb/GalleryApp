@@ -31,7 +31,7 @@ extension UnsplashFetcher: UnsplashFetchable {
             let error = UnsplashError.invalidURL(description: "Couldn't create URL")
             return Fail(error: error).eraseToAnyPublisher()
         }
-        print(url)
+        //print(url)
         return session.dataTaskPublisher(for: URLRequest(url: url))
             .mapError { error in
                     .network(description: error.localizedDescription)

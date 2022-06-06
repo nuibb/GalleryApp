@@ -10,12 +10,12 @@ import SwiftUI
 struct PhotoDetailView: View {
     
     // MARK: - PROPERTIES
-    let photo: Photo
+    let photoViewModel: PhotoViewModel
 
     // MARK: - BODY
     // MARK: - BODY
     var body: some View {
-        AsyncImage(url: URL(string: photo.urls.thumb), transaction: Transaction(animation: .spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0.25))) { phase in
+        AsyncImage(url: URL(string: photoViewModel.thumbUrl), transaction: Transaction(animation: .spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0.25))) { phase in
           switch phase {
           case .success(let image):
             image
@@ -36,7 +36,10 @@ struct PhotoDetailView: View {
 
 struct PhotoDetailView_Previews: PreviewProvider {
     static let photos: [Photo] = Bundle.main.decode("photos.json")
+    static let photosViewModels: [PhotoViewModel] = photos.map { response in
+        PhotoViewModel(photo: response)
+    }
     static var previews: some View {
-        PhotoDetailView(photo: photos[0])
+        PhotoDetailView(photoViewModel: photosViewModels[0])
     }
 }
