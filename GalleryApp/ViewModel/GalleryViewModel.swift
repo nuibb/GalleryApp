@@ -10,6 +10,7 @@ import Combine
 
 class GalleryViewModel: ObservableObject {
     @Published var dataSource: [PhotoViewModel] = []
+    var pageIndex: Int = 1
     
     private let unsplashFetcher: UnsplashFetchable
     private var disposables = Set<AnyCancellable>()
@@ -17,11 +18,11 @@ class GalleryViewModel: ObservableObject {
     //Dependancy Injection
     init(unsplashFetcher: UnsplashFetchable) {
         self.unsplashFetcher = unsplashFetcher
-        fetchPhotos()
+        fetchPhotos(forIndex: pageIndex)
     }
     
-    func fetchPhotos() {
-        unsplashFetcher.getUnsplashPhotos()
+    func fetchPhotos(forIndex index: Int) {
+        unsplashFetcher.getUnsplashPhotos(withPagination: index)
             .map { response in
                 response.map(PhotoViewModel.init)
             }
@@ -39,7 +40,8 @@ class GalleryViewModel: ObservableObject {
                 },
                 receiveValue: { [weak self] photosViewModels in
                     guard let self = self else { return }
-                    self.dataSource = photosViewModels
+                    self.dataSource.append(contentsOf: photosViewModels)
+                    self.pageIndex += 1
                 })
             .store(in: &disposables)
     }
