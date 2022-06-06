@@ -32,8 +32,6 @@
 		8BDC891A2847E891001097A2 /* GalleryAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC89192847E891001097A2 /* GalleryAppTests.swift */; };
 		8BDC89242847E892001097A2 /* GalleryAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC89232847E892001097A2 /* GalleryAppUITests.swift */; };
 		8BDC89262847E892001097A2 /* GalleryAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC89252847E892001097A2 /* GalleryAppUITestsLaunchTests.swift */; };
-		8BFF1217284A4D8700943D69 /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFF1216284A4D8700943D69 /* APIHandler.swift */; };
-		8BFF121F284A923A00943D69 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFF121E284A923A00943D69 /* ApiManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,8 +80,6 @@
 		8BDC891F2847E892001097A2 /* GalleryAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GalleryAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BDC89232847E892001097A2 /* GalleryAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryAppUITests.swift; sourceTree = "<group>"; };
 		8BDC89252847E892001097A2 /* GalleryAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		8BFF1216284A4D8700943D69 /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
-		8BFF121E284A923A00943D69 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +138,7 @@
 		8B98358E284DB4270029641F /* UnplashApi */ = {
 			isa = PBXGroup;
 			children = (
+				8B98358A284D7E940029641F /* Configuration.swift */,
 				8B983591284DB5CF0029641F /* UnsplashError.swift */,
 				8B983574284CF6990029641F /* EndPoints.swift */,
 				8B98358F284DB4950029641F /* UnsplashApiFetcher.swift */,
@@ -176,7 +173,6 @@
 				8B98358E284DB4270029641F /* UnplashApi */,
 				8B98356F284CC3E70029641F /* Extension */,
 				8B98356C284CBB210029641F /* Data */,
-				8BFF121B284A91A600943D69 /* API */,
 				8BFF1218284A672D00943D69 /* Model */,
 				8B983567284CA99C0029641F /* View */,
 				8BDC890C2847E891001097A2 /* Assets.xcassets */,
@@ -217,16 +213,6 @@
 				8BFF121D284A91E100943D69 /* DbModel */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		8BFF121B284A91A600943D69 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				8BFF121E284A923A00943D69 /* ApiManager.swift */,
-				8BFF1216284A4D8700943D69 /* APIHandler.swift */,
-				8B98358A284D7E940029641F /* Configuration.swift */,
-			);
-			path = API;
 			sourceTree = "<group>";
 		};
 		8BFF121C284A91B400943D69 /* ApiModel */ = {
@@ -384,7 +370,6 @@
 			files = (
 				8B983573284CCEC20029641F /* ImageModifier.swift in Sources */,
 				8B983565284CA6060029641F /* CurrentUserCollection.swift in Sources */,
-				8BFF1217284A4D8700943D69 /* APIHandler.swift in Sources */,
 				8B983592284DB5CF0029641F /* UnsplashError.swift in Sources */,
 				8BDC890B2847E88F001097A2 /* ContentView.swift in Sources */,
 				8B983561284CA6060029641F /* UserLinks.swift in Sources */,
@@ -399,7 +384,6 @@
 				8B983590284DB4950029641F /* UnsplashApiFetcher.swift in Sources */,
 				8B98358B284D7E940029641F /* Configuration.swift in Sources */,
 				8B98355F284CA6060029641F /* User.swift in Sources */,
-				8BFF121F284A923A00943D69 /* ApiManager.swift in Sources */,
 				8BDC89092847E88F001097A2 /* GalleryAppApp.swift in Sources */,
 				8B983563284CA6060029641F /* Urls.swift in Sources */,
 				8B983571284CC3F70029641F /* BundleExtension.swift in Sources */,
