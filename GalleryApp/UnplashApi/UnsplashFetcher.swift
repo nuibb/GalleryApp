@@ -9,11 +9,12 @@ import Foundation
 import Combine
 
 protocol UnsplashFetchable {
-    func getUnsplashPhotos(withPagination index: Int) -> AnyPublisher<[Photo], UnsplashError>
+    func getUnsplashPhotos() -> AnyPublisher<[Photo], UnsplashError>
 }
 
 class UnsplashFetcher {
     private let session: URLSession
+    private var pageIndex = 0
     
     init(session: URLSession = .shared) {
         self.session = session
@@ -22,8 +23,9 @@ class UnsplashFetcher {
 
 // MARK: - UnsplashFetchable
 extension UnsplashFetcher: UnsplashFetchable {
-    func getUnsplashPhotos(withPagination index: Int) -> AnyPublisher<[Photo], UnsplashError> {
-        return fetchData(with: makeUnsplashAPIComponents(withPageIndex: index))
+    func getUnsplashPhotos() -> AnyPublisher<[Photo], UnsplashError> {
+        self.pageIndex += 1
+        return fetchData(with: makeUnsplashAPIComponents(withPageIndex: self.pageIndex))
     }
     
     private func fetchData<T>(with components: URLComponents) -> AnyPublisher<T, UnsplashError> where T: Decodable {

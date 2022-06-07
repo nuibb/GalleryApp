@@ -10,7 +10,11 @@ import SwiftUI
 struct PhotoDetailView: View {
     
     // MARK: - PROPERTIES
-    let photoViewModel: PhotoViewModel
+    private let photoViewModel: PhotoViewModel
+    
+    init(photoViewModel: PhotoViewModel) {
+        self.photoViewModel = photoViewModel
+    }
 
     // MARK: - BODY
     var body: some View {

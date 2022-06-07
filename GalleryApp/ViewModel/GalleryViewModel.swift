@@ -8,21 +8,21 @@
 import SwiftUI
 import Combine
 
+@MainActor
 class GalleryViewModel: ObservableObject {
-    @Published var dataSource: [PhotoViewModel] = []
-    var pageIndex: Int = 1
     
+    @Published var dataSource: [PhotoViewModel] = []
     private let unsplashFetcher: UnsplashFetchable
     private var disposables = Set<AnyCancellable>()
     
     //Dependancy Injection
     init(unsplashFetcher: UnsplashFetchable) {
         self.unsplashFetcher = unsplashFetcher
-        fetchPhotos(forIndex: pageIndex)
+        fetchPhotos()
     }
     
-    func fetchPhotos(forIndex index: Int) {
-        unsplashFetcher.getUnsplashPhotos(withPagination: index)
+    func fetchPhotos() {
+        unsplashFetcher.getUnsplashPhotos()
             .map { response in
                 response.map(PhotoViewModel.init)
             }
@@ -41,7 +41,6 @@ class GalleryViewModel: ObservableObject {
                 receiveValue: { [weak self] photosViewModels in
                     guard let self = self else { return }
                     self.dataSource.append(contentsOf: photosViewModels)
-                    self.pageIndex += 1
                 })
             .store(in: &disposables)
     }
