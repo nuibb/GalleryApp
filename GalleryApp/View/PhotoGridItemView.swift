@@ -14,7 +14,7 @@ struct PhotoGridItemView: View {
     // MARK: - BODY
     var body: some View {
         CacheAsyncImage(
-            url: photoViewModel.thumbUrl
+            viewModel: photoViewModel
         ) { phase in
             switch phase {
             case .success(let image):
@@ -37,10 +37,8 @@ struct PhotoGridItemView: View {
 
 struct PhotoGridItemView_Previews: PreviewProvider {
     static let photos: [Photo] = Bundle.main.decode("photos.json")
-    static let viewModels: [PhotoViewModel] = photos.map { photo in
-        PhotoViewModel(photo: photo)
-    }
+    static let viewModel: PhotoViewModel = PhotoViewModel(photo: photos.first!)
     static var previews: some View {
-        PhotoGridItemView(photoViewModel: viewModels[0])
+        PhotoGridItemView(photoViewModel: viewModel)
     }
 }

@@ -27,6 +27,10 @@
 		8B983594284DBD9E0029641F /* Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B983593284DBD9E0029641F /* Parsing.swift */; };
 		8B983597284DCE3E0029641F /* GalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B983596284DCE3E0029641F /* GalleryViewModel.swift */; };
 		8B983599284DD5910029641F /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B983598284DD5910029641F /* PhotoViewModel.swift */; };
+		8B9B2AA928503C4C006A82EF /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9B2AA828503C4C006A82EF /* ImageCache.swift */; };
+		8B9B2AAB28504B6D006A82EF /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9B2AAA28504B6D006A82EF /* URLExtension.swift */; };
+		8B9B2AAE2850A269006A82EF /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9B2AAD2850A269006A82EF /* Reachability.swift */; };
+		8B9B2AB02850AB62006A82EF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9B2AAF2850AB62006A82EF /* NetworkManager.swift */; };
 		8BBB9600284FB0E5009EA193 /* CacheAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBB95FF284FB0E5009EA193 /* CacheAsyncImage.swift */; };
 		8BDC89092847E88F001097A2 /* GalleryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC89082847E88F001097A2 /* GalleryApp.swift */; };
 		8BDC890B2847E88F001097A2 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC890A2847E88F001097A2 /* GalleryView.swift */; };
@@ -76,6 +80,10 @@
 		8B983593284DBD9E0029641F /* Parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parsing.swift; sourceTree = "<group>"; };
 		8B983596284DCE3E0029641F /* GalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewModel.swift; sourceTree = "<group>"; };
 		8B983598284DD5910029641F /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
+		8B9B2AA828503C4C006A82EF /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		8B9B2AAA28504B6D006A82EF /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
+		8B9B2AAD2850A269006A82EF /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		8B9B2AAF2850AB62006A82EF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		8BBB95FF284FB0E5009EA193 /* CacheAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheAsyncImage.swift; sourceTree = "<group>"; };
 		8BDC89052847E88F001097A2 /* GalleryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GalleryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BDC89082847E88F001097A2 /* GalleryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryApp.swift; sourceTree = "<group>"; };
@@ -115,12 +123,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8B670FA7284EFF9500168D61 /* Misc */ = {
+		8B670FA7284EFF9500168D61 /* Caching */ = {
 			isa = PBXGroup;
 			children = (
+				8B9B2AA828503C4C006A82EF /* ImageCache.swift */,
 				8BBB95FF284FB0E5009EA193 /* CacheAsyncImage.swift */,
 			);
-			path = Misc;
+			path = Caching;
 			sourceTree = "<group>";
 		};
 		8B983567284CA99C0029641F /* View */ = {
@@ -148,6 +157,7 @@
 			children = (
 				8B983570284CC3F70029641F /* BundleExtension.swift */,
 				8B983572284CCEC20029641F /* ImageModifier.swift */,
+				8B9B2AAA28504B6D006A82EF /* URLExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -173,6 +183,15 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		8B9B2AAC2850A242006A82EF /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				8B9B2AAD2850A269006A82EF /* Reachability.swift */,
+				8B9B2AAF2850AB62006A82EF /* NetworkManager.swift */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
 		8BDC88FC2847E88F001097A2 = {
 			isa = PBXGroup;
 			children = (
@@ -196,7 +215,8 @@
 		8BDC89072847E88F001097A2 /* GalleryApp */ = {
 			isa = PBXGroup;
 			children = (
-				8B670FA7284EFF9500168D61 /* Misc */,
+				8B9B2AAC2850A242006A82EF /* Misc */,
+				8B670FA7284EFF9500168D61 /* Caching */,
 				8B98358E284DB4270029641F /* UnplashApi */,
 				8BFF1218284A672D00943D69 /* Model */,
 				8B983567284CA99C0029641F /* View */,
@@ -408,12 +428,16 @@
 				8B98356B284CAD9C0029641F /* PhotoGridItemView.swift in Sources */,
 				8B983560284CA6060029641F /* ProfileImage.swift in Sources */,
 				8B983564284CA6060029641F /* JSONSchemaSupport.swift in Sources */,
+				8B9B2AB02850AB62006A82EF /* NetworkManager.swift in Sources */,
+				8B9B2AAE2850A269006A82EF /* Reachability.swift in Sources */,
 				8B983575284CF6990029641F /* EndPoints.swift in Sources */,
 				8B983566284CA6060029641F /* PhotoLinks.swift in Sources */,
 				8B983590284DB4950029641F /* UnsplashFetcher.swift in Sources */,
+				8B9B2AAB28504B6D006A82EF /* URLExtension.swift in Sources */,
 				8BF240DA284E02B600258D33 /* GridView.swift in Sources */,
 				8B98358B284D7E940029641F /* Configuration.swift in Sources */,
 				8B98355F284CA6060029641F /* User.swift in Sources */,
+				8B9B2AA928503C4C006A82EF /* ImageCache.swift in Sources */,
 				8B983599284DD5910029641F /* PhotoViewModel.swift in Sources */,
 				8BDC89092847E88F001097A2 /* GalleryApp.swift in Sources */,
 				8B983597284DCE3E0029641F /* GalleryViewModel.swift in Sources */,
@@ -526,6 +550,7 @@
 				DEVELOPMENT_TEAM = F23S5CACJ2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "$(PRODUCT_NAME) needs permission to access photos on your device";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -655,6 +680,7 @@
 				DEVELOPMENT_TEAM = F23S5CACJ2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "$(PRODUCT_NAME) needs permission to access photos on your device";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -785,6 +811,7 @@
 				DEVELOPMENT_TEAM = F23S5CACJ2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "$(PRODUCT_NAME) needs permission to access photos on your device";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -908,6 +935,7 @@
 				DEVELOPMENT_TEAM = F23S5CACJ2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "$(PRODUCT_NAME) needs permission to access photos on your device";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1032,6 +1060,7 @@
 				DEVELOPMENT_TEAM = F23S5CACJ2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "$(PRODUCT_NAME) needs permission to access photos on your device";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1215,6 +1244,7 @@
 				DEVELOPMENT_TEAM = F23S5CACJ2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "$(PRODUCT_NAME) needs permission to access photos on your device";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1246,6 +1276,7 @@
 				DEVELOPMENT_TEAM = F23S5CACJ2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "$(PRODUCT_NAME) needs permission to access photos on your device";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

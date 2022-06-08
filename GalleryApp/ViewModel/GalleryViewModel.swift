@@ -14,11 +14,17 @@ class GalleryViewModel: ObservableObject {
     @Published var dataSource: [PhotoViewModel] = []
     private let unsplashFetcher: UnsplashFetchable
     private var disposables = Set<AnyCancellable>()
+    private var networkManager: NetworkManager
     
     //Dependancy Injection
-    init(unsplashFetcher: UnsplashFetchable) {
+    init(unsplashFetcher: UnsplashFetchable, networkManager: NetworkManager) {
         self.unsplashFetcher = unsplashFetcher
-        fetchPhotos()
+        self.networkManager = networkManager
+        if self.networkManager.isConnectedToNetwork() {
+            self.fetchPhotos()
+        } else {
+            print("KK")
+        }
     }
     
     func fetchPhotos() {

@@ -39,10 +39,8 @@ struct PhotoDetailView: View {
 
 struct PhotoDetailView_Previews: PreviewProvider {
     static let photos: [Photo] = Bundle.main.decode("photos.json")
-    static let photosViewModels: [PhotoViewModel] = photos.map { response in
-        PhotoViewModel(photo: response)
-    }
+    static let viewModel: PhotoViewModel = PhotoViewModel(photo: photos.first!)
     static var previews: some View {
-        PhotoDetailView(photoViewModel: photosViewModels[0])
+        PhotoDetailView(photoViewModel: viewModel)
     }
 }

@@ -14,7 +14,7 @@ struct GalleryView: View {
     @ObservedObject var viewModel: GalleryViewModel
     
     init() {
-        self.viewModel = GalleryViewModel(unsplashFetcher: UnsplashFetcher())
+        self.viewModel = GalleryViewModel(unsplashFetcher: UnsplashFetcher(), networkManager: NetworkManager())
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]// for .inline, use titleTextAttributes
     }
     
