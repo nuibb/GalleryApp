@@ -32,7 +32,7 @@ struct GalleryView: View {
                     }
                 } //: SCROLL
             } //: GROUP
-            .navigationBarTitle("Gallery", displayMode: .large)
+            .navigationBarTitle(Constants.navigationTitle, displayMode: .large)
         }//: NAVIGATION
         .navigationViewStyle(.stack)
     }

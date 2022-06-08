@@ -24,9 +24,9 @@ struct PhotoGridItemView: View {
                 // .transition(.slide)
                     .transition(.scale)
             case .failure(_):
-                Image(systemName: "ant.circle.fill").iconModifier()
+                Image(systemName: Constants.failedPhaseIcon).iconModifier()
             case .empty:
-                Image(systemName: "photo.circle.fill").iconModifier()
+                Image(systemName: Constants.emptyPhaseIcon).iconModifier()
             @unknown default:
                 ProgressView()
             }
@@ -36,7 +36,7 @@ struct PhotoGridItemView: View {
 }
 
 struct PhotoGridItemView_Previews: PreviewProvider {
-    static let photos: [Photo] = Bundle.main.decode("photos.json")
+    static let photos: [Photo] = Bundle.main.decode(Constants.pathForLocalJsonData)
     static let viewModel: PhotoViewModel = PhotoViewModel(photo: photos.first!)
     static var previews: some View {
         PhotoGridItemView(photoViewModel: viewModel)
