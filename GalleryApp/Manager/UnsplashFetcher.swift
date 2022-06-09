@@ -23,6 +23,7 @@ class UnsplashFetcher {
 
 // MARK: - UnsplashFetchable
 extension UnsplashFetcher: UnsplashFetchable {
+    
     func getUnsplashPhotos() -> AnyPublisher<[Photo], UnsplashError> {
         self.pageIndex += 1
         return fetchData(with: makeUnsplashAPIComponents(withPageIndex: self.pageIndex))
@@ -33,7 +34,7 @@ extension UnsplashFetcher: UnsplashFetchable {
             let error = UnsplashError.invalidURL(description: Constants.invalidUrlMessage)
             return Fail(error: error).eraseToAnyPublisher()
         }
-        //print(url)
+        print(url)
         return session.dataTaskPublisher(for: URLRequest(url: url))
             .mapError { error in
                     .network(description: error.localizedDescription)
