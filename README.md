@@ -19,7 +19,7 @@ git config --global credential.helper wincred
 
 ---
 
-# Download & install XCode
+## Download & install XCode
 
 1. Download and install "**XCode**" from App Store or from this [link](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
 
