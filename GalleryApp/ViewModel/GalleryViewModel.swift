@@ -8,21 +8,32 @@
 import SwiftUI
 import Combine
 
+@MainActor
 class GalleryViewModel: ObservableObject {
-    @Published var dataSource: [PhotoViewModel] = []
-    var pageIndex: Int = 1
     
+    @Published var dataSource: [PhotoViewModel] = []
     private let unsplashFetcher: UnsplashFetchable
+    private let databaseManager: DbProtocol
     private var disposables = Set<AnyCancellable>()
+    private let networkReachability = NetworkManager.shared
     
     //Dependancy Injection
-    init(unsplashFetcher: UnsplashFetchable) {
+    init(unsplashFetcher: UnsplashFetchable, databaseManager: DbProtocol) {
         self.unsplashFetcher = unsplashFetcher
-        fetchPhotos(forIndex: pageIndex)
+        self.databaseManager = databaseManager
+        if self.networkReachability.isNetworkAvailable() {
+            self.fetchPhotos()
+        } else {
+            let photos = self.databaseManager.getAllPhotos()
+            self.dataSource = photos.map { response in
+                response.toMap()
+            }
+            //print("Count in DB: \(self.dataSource.count)")
+        }
     }
     
-    func fetchPhotos(forIndex index: Int) {
-        unsplashFetcher.getUnsplashPhotos(withPagination: index)
+    func fetchPhotos() {
+        unsplashFetcher.getUnsplashPhotos()
             .map { response in
                 response.map(PhotoViewModel.init)
             }
@@ -41,7 +52,10 @@ class GalleryViewModel: ObservableObject {
                 receiveValue: { [weak self] photosViewModels in
                     guard let self = self else { return }
                     self.dataSource.append(contentsOf: photosViewModels)
-                    self.pageIndex += 1
+                    let _ = self.dataSource.map { photo in
+                        let photoEntity = PhotoEntity(value: ["photoId": photo.id, "thumbUrl": photo.thumbUrl])
+                        self.databaseManager.addPhoto(entity: photoEntity)
+                    }
                 })
             .store(in: &disposables)
     }

@@ -12,10 +12,15 @@ struct GalleryView: View {
     
     // MARK: - PROPERTIES
     @ObservedObject var viewModel: GalleryViewModel
+    private let unsplashFetcher: UnsplashFetchable
+    private let databaseManager: DbProtocol
+    private let photoEntityRepository: PhotoEntityRepository
     
-    // MARK: PROPERTIES
     init() {
-        self.viewModel = GalleryViewModel(unsplashFetcher: UnsplashFetcher())
+        self.unsplashFetcher = UnsplashFetcher()
+        self.photoEntityRepository = PhotoEntityRepository()
+        self.databaseManager = DatabaseManager(photoEntityRepository: photoEntityRepository)
+        self.viewModel = GalleryViewModel(unsplashFetcher: self.unsplashFetcher, databaseManager: self.databaseManager)
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]// for .inline, use titleTextAttributes
     }
     
@@ -33,7 +38,7 @@ struct GalleryView: View {
                     }
                 } //: SCROLL
             } //: GROUP
-            .navigationBarTitle("Gallery", displayMode: .large)
+            .navigationBarTitle(Constants.navigationTitle, displayMode: .large)
         }//: NAVIGATION
         .navigationViewStyle(.stack)
     }

@@ -10,10 +10,13 @@ import SwiftUI
 struct GridView: View {
     
     // MARK: - PROPERTIES
+    let viewModel: GalleryViewModel
     @State private var gridLayout: [GridItem] = [GridItem(.flexible())]
     @State private var gridColumn: Double = 3.0
-    let viewModel: GalleryViewModel
-    var index = 1
+    
+    init(viewModel: GalleryViewModel) {
+        self.viewModel = viewModel
+    }
     
     // MARK: - BODY
     var body: some View {
@@ -21,11 +24,17 @@ struct GridView: View {
             ForEach(viewModel.dataSource.indices, id:\.self) { index in
                 NavigationLink(destination: PhotoDetailView(photoViewModel: viewModel.dataSource[index])) {
                     PhotoGridItemView(photoViewModel: viewModel.dataSource[index])
-                        .onAppear(perform: {
+                        .task {
+                            // Task is the same like onAppear, but works with async tasks.
+                            // also it cancels the task when the view disappears.
                             if viewModel.dataSource[index] == viewModel.dataSource.last {
                                 getNextPageIfNecessary(encounteredIndex: index)
                             }
-                        })
+                        }
+                        .refreshable {
+                            // Enable Pull to refresh
+                        }
+                    
                 } //: LINK
             } //: LOOP
         }
@@ -38,15 +47,15 @@ struct GridView: View {
         gridLayout = Array(repeating: .init(.flexible()), count: Int(gridColumn))
     }
     
-    private func getNextPageIfNecessary(encounteredIndex: Int) {
+    @MainActor private func getNextPageIfNecessary(encounteredIndex: Int) {
         guard encounteredIndex == viewModel.dataSource.count - 1 else { return }
-        self.viewModel.fetchPhotos(forIndex: self.viewModel.pageIndex)
+        self.viewModel.fetchPhotos()
     }
 }
 
 struct GridView_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = GalleryViewModel(unsplashFetcher: UnsplashFetcher())
+        let viewModel = GalleryViewModel(unsplashFetcher: UnsplashFetcher(), databaseManager: DatabaseManager(photoEntityRepository: PhotoEntityRepository()))
         GridView(viewModel: viewModel)
     }
 }

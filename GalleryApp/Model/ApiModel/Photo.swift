@@ -32,4 +32,8 @@ struct Photo: Codable, Identifiable, Equatable {
     static func == (lhs: Photo, rhs: Photo) -> Bool {
         return lhs.id == rhs.id
     }
+    
+//    func toMap() -> PhotoEntity {
+//        return PhotoEntity(_photoId: self.id, _thumbUrl: self.urls.thumb)
+//    }
 }
