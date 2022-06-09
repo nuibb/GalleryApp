@@ -55,7 +55,7 @@ struct GridView: View {
 
 struct GridView_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = GalleryViewModel(unsplashFetcher: UnsplashFetcher(), networkManager: NetworkManager())
+        let viewModel = GalleryViewModel(unsplashFetcher: UnsplashFetcher(), databaseManager: DatabaseManager(photoEntityRepository: PhotoEntityRepository()))
         GridView(viewModel: viewModel)
     }
 }

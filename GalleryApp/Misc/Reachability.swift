@@ -10,6 +10,8 @@ import Network
 
 class NetworkReachability {
     
+    static let shared = NetworkReachability()
+    
     var pathMonitor: NWPathMonitor!
     var path: NWPath?
     lazy var pathUpdateHandler: ((NWPath) -> Void) = { path in
@@ -35,8 +37,6 @@ class NetworkReachability {
         if let path = self.path {
             if path.status == NWPath.Status.satisfied {
                 return true
-            } else {
-                print("ggg")
             }
         }
         return false

@@ -12,9 +12,15 @@ struct GalleryView: View {
     
     // MARK: - PROPERTIES
     @ObservedObject var viewModel: GalleryViewModel
+    private let unsplashFetcher: UnsplashFetchable
+    private let databaseManager: DbProtocol
+    private let photoEntityRepository: PhotoEntityRepository
     
     init() {
-        self.viewModel = GalleryViewModel(unsplashFetcher: UnsplashFetcher(), networkManager: NetworkManager())
+        self.unsplashFetcher = UnsplashFetcher()
+        self.photoEntityRepository = PhotoEntityRepository()
+        self.databaseManager = DatabaseManager(photoEntityRepository: photoEntityRepository)
+        self.viewModel = GalleryViewModel(unsplashFetcher: self.unsplashFetcher, databaseManager: self.databaseManager)
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]// for .inline, use titleTextAttributes
     }
     

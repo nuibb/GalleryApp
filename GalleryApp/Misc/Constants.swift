@@ -13,4 +13,5 @@ struct Constants {
     static let failedPhaseIcon = "ant.circle.fill"
     static let emptyPhaseIcon = "photo.circle.fill"
     static let pathForLocalJsonData = "photos.json"
+    static let invalidUrlMessage = "Couldn't create URL"
 }

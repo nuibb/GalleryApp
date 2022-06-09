@@ -13,17 +13,22 @@ class GalleryViewModel: ObservableObject {
     
     @Published var dataSource: [PhotoViewModel] = []
     private let unsplashFetcher: UnsplashFetchable
+    private let databaseManager: DbProtocol
     private var disposables = Set<AnyCancellable>()
-    private var networkManager: NetworkManager
+    private let networkReachability = NetworkManager.shared
     
     //Dependancy Injection
-    init(unsplashFetcher: UnsplashFetchable, networkManager: NetworkManager) {
+    init(unsplashFetcher: UnsplashFetchable, databaseManager: DbProtocol) {
         self.unsplashFetcher = unsplashFetcher
-        self.networkManager = networkManager
-        if self.networkManager.isConnectedToNetwork() {
+        self.databaseManager = databaseManager
+        if self.networkReachability.isNetworkAvailable() {
             self.fetchPhotos()
         } else {
-            print("KK")
+            let photos = self.databaseManager.getAllPhotos()
+            self.dataSource = photos.map { response in
+                response.toMap()
+            }
+            //print("Count in DB: \(self.dataSource.count)")
         }
     }
     
@@ -47,6 +52,10 @@ class GalleryViewModel: ObservableObject {
                 receiveValue: { [weak self] photosViewModels in
                     guard let self = self else { return }
                     self.dataSource.append(contentsOf: photosViewModels)
+                    let _ = self.dataSource.map { photo in
+                        let photoEntity = PhotoEntity(value: ["photoId": photo.id, "thumbUrl": photo.thumbUrl])
+                        self.databaseManager.addPhoto(entity: photoEntity)
+                    }
                 })
             .store(in: &disposables)
     }

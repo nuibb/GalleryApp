@@ -30,7 +30,7 @@ extension UnsplashFetcher: UnsplashFetchable {
     
     private func fetchData<T>(with components: URLComponents) -> AnyPublisher<T, UnsplashError> where T: Decodable {
         guard let url = components.url else {
-            let error = UnsplashError.invalidURL(description: "Couldn't create URL")
+            let error = UnsplashError.invalidURL(description: Constants.invalidUrlMessage)
             return Fail(error: error).eraseToAnyPublisher()
         }
         //print(url)

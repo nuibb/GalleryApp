@@ -33,6 +33,13 @@
 		8B9B2AB02850AB62006A82EF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9B2AAF2850AB62006A82EF /* NetworkManager.swift */; };
 		8B9B2AB22850B992006A82EF /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9B2AB12850B992006A82EF /* ActivityViewController.swift */; };
 		8B9B2AB42850BEED006A82EF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9B2AB32850BEED006A82EF /* Constants.swift */; };
+		8B9B2AB72850C918006A82EF /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 8B9B2AB62850C918006A82EF /* Realm */; };
+		8B9B2AB92850C918006A82EF /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8B9B2AB82850C918006A82EF /* RealmSwift */; };
+		8B9B2ABC2850DF3D006A82EF /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9B2ABB2850DF3D006A82EF /* DatabaseManager.swift */; };
+		8B9B2ABF2850DFF9006A82EF /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9B2ABE2850DFF9006A82EF /* BaseRepository.swift */; };
+		8B9B2AC12850E18F006A82EF /* DatabaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9B2AC02850E18F006A82EF /* DatabaseHandler.swift */; };
+		8B9B2AC52850ECE2006A82EF /* PhotoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9B2AC42850ECE2006A82EF /* PhotoRepository.swift */; };
+		8B9B2AC72850F6C3006A82EF /* PhotoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9B2AC62850F6C3006A82EF /* PhotoEntity.swift */; };
 		8BBB9600284FB0E5009EA193 /* CacheAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBB95FF284FB0E5009EA193 /* CacheAsyncImage.swift */; };
 		8BDC89092847E88F001097A2 /* GalleryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC89082847E88F001097A2 /* GalleryApp.swift */; };
 		8BDC890B2847E88F001097A2 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDC890A2847E88F001097A2 /* GalleryView.swift */; };
@@ -88,6 +95,11 @@
 		8B9B2AAF2850AB62006A82EF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		8B9B2AB12850B992006A82EF /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		8B9B2AB32850BEED006A82EF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8B9B2ABB2850DF3D006A82EF /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		8B9B2ABE2850DFF9006A82EF /* BaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRepository.swift; sourceTree = "<group>"; };
+		8B9B2AC02850E18F006A82EF /* DatabaseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseHandler.swift; sourceTree = "<group>"; };
+		8B9B2AC42850ECE2006A82EF /* PhotoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRepository.swift; sourceTree = "<group>"; };
+		8B9B2AC62850F6C3006A82EF /* PhotoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEntity.swift; sourceTree = "<group>"; };
 		8BBB95FF284FB0E5009EA193 /* CacheAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheAsyncImage.swift; sourceTree = "<group>"; };
 		8BDC89052847E88F001097A2 /* GalleryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GalleryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BDC89082847E88F001097A2 /* GalleryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryApp.swift; sourceTree = "<group>"; };
@@ -107,6 +119,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B9B2AB92850C918006A82EF /* RealmSwift in Frameworks */,
+				8B9B2AB72850C918006A82EF /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +212,24 @@
 			path = Misc;
 			sourceTree = "<group>";
 		};
+		8B9B2ABA2850DF25006A82EF /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				8B9B2ABB2850DF3D006A82EF /* DatabaseManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		8B9B2ABD2850DFE2006A82EF /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				8B9B2ABE2850DFF9006A82EF /* BaseRepository.swift */,
+				8B9B2AC02850E18F006A82EF /* DatabaseHandler.swift */,
+				8B9B2AC42850ECE2006A82EF /* PhotoRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		8BDC88FC2847E88F001097A2 = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +253,8 @@
 		8BDC89072847E88F001097A2 /* GalleryApp */ = {
 			isa = PBXGroup;
 			children = (
+				8B9B2ABD2850DFE2006A82EF /* Repository */,
+				8B9B2ABA2850DF25006A82EF /* Manager */,
 				8B9B2AAC2850A242006A82EF /* Misc */,
 				8B670FA7284EFF9500168D61 /* Caching */,
 				8B98358E284DB4270029641F /* UnplashApi */,
@@ -287,6 +321,7 @@
 		8BFF121D284A91E100943D69 /* DbModel */ = {
 			isa = PBXGroup;
 			children = (
+				8B9B2AC62850F6C3006A82EF /* PhotoEntity.swift */,
 			);
 			path = DbModel;
 			sourceTree = "<group>";
@@ -307,6 +342,10 @@
 			dependencies = (
 			);
 			name = GalleryApp;
+			packageProductDependencies = (
+				8B9B2AB62850C918006A82EF /* Realm */,
+				8B9B2AB82850C918006A82EF /* RealmSwift */,
+			);
 			productName = GalleryApp;
 			productReference = 8BDC89052847E88F001097A2 /* GalleryApp.app */;
 			productType = "com.apple.product-type.application";
@@ -379,6 +418,9 @@
 				Base,
 			);
 			mainGroup = 8BDC88FC2847E88F001097A2;
+			packageReferences = (
+				8B9B2AB52850C918006A82EF /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = 8BDC89062847E88F001097A2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -423,13 +465,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B983573284CCEC20029641F /* ImageModifier.swift in Sources */,
+				8B9B2AC52850ECE2006A82EF /* PhotoRepository.swift in Sources */,
 				8B983565284CA6060029641F /* CurrentUserCollection.swift in Sources */,
+				8B9B2ABC2850DF3D006A82EF /* DatabaseManager.swift in Sources */,
+				8B9B2AC12850E18F006A82EF /* DatabaseHandler.swift in Sources */,
 				8B983592284DB5CF0029641F /* UnsplashError.swift in Sources */,
 				8BDC890B2847E88F001097A2 /* GalleryView.swift in Sources */,
+				8B9B2AC72850F6C3006A82EF /* PhotoEntity.swift in Sources */,
 				8B983561284CA6060029641F /* UserLinks.swift in Sources */,
 				8B9B2AB42850BEED006A82EF /* Constants.swift in Sources */,
 				8B983562284CA6060029641F /* Photo.swift in Sources */,
 				8BBB9600284FB0E5009EA193 /* CacheAsyncImage.swift in Sources */,
+				8B9B2ABF2850DFF9006A82EF /* BaseRepository.swift in Sources */,
 				8B983594284DBD9E0029641F /* Parsing.swift in Sources */,
 				8B983569284CAC6E0029641F /* PhotoDetailView.swift in Sources */,
 				8B98356B284CAD9C0029641F /* PhotoGridItemView.swift in Sources */,
@@ -1441,6 +1488,30 @@
 			defaultConfigurationName = "Dev Release";
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8B9B2AB52850C918006A82EF /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8B9B2AB62850C918006A82EF /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B9B2AB52850C918006A82EF /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		8B9B2AB82850C918006A82EF /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B9B2AB52850C918006A82EF /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8BDC88FD2847E88F001097A2 /* Project object */;
 }

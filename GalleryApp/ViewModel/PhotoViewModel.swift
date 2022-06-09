@@ -34,4 +34,8 @@ struct PhotoViewModel: Identifiable, Equatable {
     init(photo: Photo) {
         self.photo = photo
     }
+    
+//    func toMap() -> PhotoEntity {
+//        return PhotoEntity(_photoId: self.id, _thumbUrl: self.thumbUrl)
+//    }
 }

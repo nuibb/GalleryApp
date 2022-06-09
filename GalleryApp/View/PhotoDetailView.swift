@@ -43,6 +43,7 @@ struct PhotoDetailView: View {
                 self.sheet.toggle()
             }, label: {
                 Text(Constants.shareImageTitle)
+                    .font(.title2).bold()
                     .fontWeight(.heavy)
             })
             .sheet(isPresented: $sheet, onDismiss: {

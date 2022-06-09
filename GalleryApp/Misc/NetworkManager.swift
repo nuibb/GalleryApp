@@ -10,11 +10,11 @@ import UIKit
 import SystemConfiguration
 
 public class NetworkManager {
-    init() {
-        
-    }
     
-    public func isConnectedToNetwork() -> Bool {
+    // Singleton
+    static let shared = NetworkManager()
+    
+    public func isNetworkAvailable() -> Bool {
         var zeroAddress = sockaddr_in()
         zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
         zeroAddress.sin_family = sa_family_t(AF_INET)
