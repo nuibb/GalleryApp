@@ -19,17 +19,21 @@ struct PhotoEntityRepository : PhotoRepository {
     typealias T = PhotoEntity
     let handler = DatabaseHandler.shared
     
-//    func mapper<T: Object>(object: T) -> T? {
-//        switch (T.self) {
-//        case is PhotoEntity.Type:
-//            return PhotoEntity() as? T
-//        default:
-//            return nil
-//        }
-//    }
+    //    func mapper<T: Object>(object: T) -> T? {
+    //        switch (T.self) {
+    //        case is PhotoEntity.Type:
+    //            return PhotoEntity() as? T
+    //        default:
+    //            return nil
+    //        }
+    //    }
     
     func add(entity: T) {
-        handler.add(entity)
+        let predicate = NSPredicate(format: "photoId == %@", entity.photoId)
+        let fetchedObjects = handler.fetch(T.self, with: predicate)
+        if fetchedObjects.count == 0 {
+            handler.add(entity)
+        }
     }
     
     func getAll() -> [T] {
