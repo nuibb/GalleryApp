@@ -13,6 +13,9 @@ struct PhotoDetailView: View {
     private let viewModel: PhotoViewModel
     @State var items: [Any] = []
     @State var sheet = false
+    //@GestureState var scale: CGFloat = 1.0
+    @State var currentAmount: CGFloat = 0
+    @State var lastAmount: CGFloat = 0
     
     init(photoViewModel: PhotoViewModel) {
         self.viewModel = photoViewModel
@@ -36,6 +39,19 @@ struct PhotoDetailView: View {
                     ProgressView()
                 }
             }
+            .scaleEffect(currentAmount + 1)
+            .gesture(
+                MagnificationGesture()
+                    .onChanged { value in
+                        currentAmount = value - 1
+                    }
+                    .onEnded { value in
+//                        withAnimation(.spring()){
+//                            currentAmount = 0
+//                        }
+                        lastAmount += currentAmount
+                    }
+            )
             Spacer()
                 .frame(height: 50)
             Button(action: {
