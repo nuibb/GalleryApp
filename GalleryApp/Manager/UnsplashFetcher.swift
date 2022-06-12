@@ -8,10 +8,6 @@
 import Foundation
 import Combine
 
-protocol UnsplashFetchable {
-    func getUnsplashPhotos() -> AnyPublisher<[Photo], UnsplashError>
-}
-
 class UnsplashFetcher {
     private let session: URLSession
     private var pageIndex = 0

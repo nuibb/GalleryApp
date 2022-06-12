@@ -8,16 +8,15 @@
 import Foundation
 import RealmSwift
 
-//Implementing repository design pattern
-protocol PhotoRepository : BaseRepository {
-    //For later scope
-}
-
-
 struct PhotoEntityRepository : PhotoRepository {
     
     typealias T = PhotoEntity
-    let handler = DatabaseHandler.shared
+    private let handler: DbHandlerFetchable
+    
+    // Dependancy Injection
+    init(handler: DbHandlerFetchable) {
+        self.handler = handler
+    }
     
     //    func mapper<T: Object>(object: T) -> T? {
     //        switch (T.self) {
@@ -30,14 +29,14 @@ struct PhotoEntityRepository : PhotoRepository {
     
     func add(entity: T) {
         let predicate = NSPredicate(format: "photoId == %@", entity.photoId)
-        let fetchedObjects = handler.fetch(T.self, with: predicate)
+        let fetchedObjects = self.handler.fetch(T.self, with: predicate)
         if fetchedObjects.count == 0 {
-            handler.add(entity)
+            self.handler.add(entity)
         }
     }
     
     func getAll() -> [T] {
-        let results = handler.fetch(T.self)
+        let results = self.handler.fetch(T.self, with: nil)
         return results
     }
     
