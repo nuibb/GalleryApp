@@ -7,12 +7,7 @@
 
 import Foundation
 
-protocol DbProtocol {
-    func addPhoto(entity: PhotoEntity)
-    func getAllPhotos() -> [PhotoEntity]
-}
-
-struct DatabaseManager: DbProtocol
+struct DatabaseManager: DbManagerFetchable
 {
     private let photoEntityRepository: PhotoEntityRepository
     

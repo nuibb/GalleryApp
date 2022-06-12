@@ -9,10 +9,10 @@ import UIKit
 import RealmSwift
 import Network
 
-class DatabaseHandler {
-    private(set) var context: Realm?
+class DatabaseHandler: DbHandlerFetchable {
     
-    static let shared = DatabaseHandler()
+    private(set) var context: Realm?
+    //static let shared = DatabaseHandler()
     
     init() {
         openRealm()
@@ -109,13 +109,13 @@ class DatabaseHandler {
         return nil
     }
     
-    func updateById<T: Object>(id: String, newTitle: String) -> T? {
+    func updateById<T: Object, value>(id: String, forValue: value) -> T? {
         if let context = context {
             do {
                 let objectId = try ObjectId(string: id)
                 let object = context.object(ofType: T.self, forPrimaryKey: objectId)
                 try context.write {
-                    //object?.title = newTitle
+                    //object?.title = value
                 }
                 return object
             } catch let error {

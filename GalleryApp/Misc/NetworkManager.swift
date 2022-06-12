@@ -14,7 +14,7 @@ public class NetworkManager {
     // Singleton
     static let shared = NetworkManager()
     
-    public func isNetworkAvailable() -> Bool {
+    public func isReachable() -> Bool {
         var zeroAddress = sockaddr_in()
         zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
         zeroAddress.sin_family = sa_family_t(AF_INET)
