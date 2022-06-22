@@ -8,6 +8,9 @@
 import Foundation
 
 struct Constants {
+    
+    private init() {}
+    
     static let navigationTitle = "Gallery"
     static let shareImageTitle = "Share Image"
     static let failedPhaseIcon = "ant.circle.fill"

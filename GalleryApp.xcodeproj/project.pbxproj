@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B7B3A7128589CB100A25C19 /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7B3A7028589CB100A25C19 /* APIHandler.swift */; };
 		8B98266328557B94003B0F72 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B98266228557B94003B0F72 /* NetworkMonitor.swift */; };
 		8B9826662855832F003B0F72 /* PhotoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9826652855832F003B0F72 /* PhotoRepository.swift */; };
 		8B98266828558360003B0F72 /* DbHandlerFetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B98266728558360003B0F72 /* DbHandlerFetchable.swift */; };
@@ -75,6 +76,7 @@
 
 /* Begin PBXFileReference section */
 		8B4B1E7A2855885E00925E33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8B7B3A7028589CB100A25C19 /* APIHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
 		8B98266228557B94003B0F72 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		8B9826652855832F003B0F72 /* PhotoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRepository.swift; sourceTree = "<group>"; };
 		8B98266728558360003B0F72 /* DbHandlerFetchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbHandlerFetchable.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 		8B98358E284DB4270029641F /* UnplashApi */ = {
 			isa = PBXGroup;
 			children = (
+				8B7B3A7028589CB100A25C19 /* APIHandler.swift */,
 				8B98358A284D7E940029641F /* Configuration.swift */,
 				8B983591284DB5CF0029641F /* UnsplashError.swift */,
 				8B983574284CF6990029641F /* EndPoints.swift */,
@@ -481,6 +484,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B7B3A7128589CB100A25C19 /* APIHandler.swift in Sources */,
 				8B983573284CCEC20029641F /* ImageModifier.swift in Sources */,
 				8B98266828558360003B0F72 /* DbHandlerFetchable.swift in Sources */,
 				8B9B2AC52850ECE2006A82EF /* PhotoEntityRepository.swift in Sources */,
